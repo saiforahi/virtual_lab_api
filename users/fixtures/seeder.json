@@ -1,0 +1,20 @@
+[
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Super Admin"
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "Admin"
+    }
+  },
+  {
+    "model": "auth.group",
+    "fields": {
+      "name": "User"
+    }
+  }
+]
