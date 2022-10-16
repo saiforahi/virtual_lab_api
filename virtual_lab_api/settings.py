@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-bxm--engvk1vkob99uty^8fjxp&3shp978sh+-xui2l4^ks$vx
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+SITE_ID = 1
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS=True
 
@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
     'users',
     'rest_auth',
     'rest_framework.authtoken',
@@ -93,10 +96,10 @@ WSGI_APPLICATION = "virtual_lab_api.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'virtual_lab',
+        'NAME': 'virtualh_api',
         # 'NAME': 'nfc_bkash',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'virtualh_root',
+        'PASSWORD': 'Dhaka@2022',
         # 'PASSWORD':'Dhaka@dma2022!@#',
         'PORT': '3306',
         'HOST': '127.0.0.1'
