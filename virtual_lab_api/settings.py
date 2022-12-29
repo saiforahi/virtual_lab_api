@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
     'allauth',
     'allauth.account',
     'users',
@@ -96,11 +96,12 @@ WSGI_APPLICATION = "virtual_lab_api.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'virtualh_api',
+        'NAME': 'virtual_lab',
         # 'NAME': 'nfc_bkash',
-        'USER': 'virtualh_root',
-        'PASSWORD': 'Dhaka@2022',
-        # 'PASSWORD':'Dhaka@dma2022!@#',
+        # 'USER': 'virtualh_root',
+        'USER': 'root',
+        # 'PASSWORD': 'Dhaka@2022',
+        'PASSWORD':'',
         'PORT': '3306',
         'HOST': '127.0.0.1'
     }

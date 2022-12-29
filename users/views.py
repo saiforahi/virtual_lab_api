@@ -22,12 +22,13 @@ class Login(APIView):
         try:
             auth_user = EmailModelBackend.authenticate(User.objects.get(email=request.data.get('email')), email=request.data.get('email'),password=request.data.get('password'))
             if auth_user:
+                user_data = UserDetailSerializer(auth_user).data
                 refresh = RefreshToken.for_user(auth_user)
                 response = {
                     'success': 'True',
                     'status code': status.HTTP_200_OK,
                     'message': 'Login successful',
-                    'data':{'refresh':str(refresh),'access':str(refresh.access_token)}
+                    'data':{'refresh':str(refresh),'access':str(refresh.access_token),'user':user_data}
                 }
             else:
                 response = {

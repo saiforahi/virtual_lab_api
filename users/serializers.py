@@ -28,7 +28,7 @@ class UserCreateSerializer(serializers.Serializer):
     first_name = serializers.CharField(required=True,max_length=255)
     last_name = serializers.CharField(allow_null=False,allow_blank=True,max_length=255)
     password = serializers.CharField(required=True,min_length=8,max_length=100,allow_blank=False,allow_null=False)
-    phone = serializers.CharField(required=True, min_length=11, max_length=20, allow_null=False, allow_blank=False)
+    phone = serializers.CharField(required=True, min_length=11, max_length=20, allow_null=False, allow_blank=False,validators=[UniqueValidator(queryset=User.objects.all(),message='A user is already registered with this phone.')])
     usr_profile_pic = serializers.ImageField(required=False, allow_empty_file=True)
 
     def create(self, validated_data):
