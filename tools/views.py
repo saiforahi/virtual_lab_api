@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from tools.models import Tool
+from tools.models import Tool, ToolType
 from tools.serializers import ToolSerializer
 from virtual_lab_api.helper import error_response, success_response
 
@@ -11,14 +11,25 @@ from virtual_lab_api.helper import error_response, success_response
 # Create your views here.
 
 class ToolList(APIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
 
-    def get(self, request):
+    def get(self, request,type_name):
         try:
-            tools = ToolSerializer(Tool.objects.all(), many=True).data
-            return Response(success_response(data={'tools':tools,'div':div}, message='Tool List'),
-                            status=status.HTTP_200_OK)
-        except Exception as e:
-            response = 'on line {}'.format(sys.exc_info()[-1].tb_lineno), str(e)
-            return Response(error_response(errors=[response], message='Tool List failed'),
-                            status=status.HTTP_400_BAD_REQUEST)
+            toolType = ToolType.objects.get(name__iexact=type_name)
+            tools=ToolSerializer(Tool.objects.filter(type=toolType),many=True).data
+            response = {
+                'success': True,
+                'status_code': status.HTTP_200_OK,
+                'message': type_name+' List',
+                'data':tools
+            }
+            return Response(response, status=status.HTTP_200_OK)
+
+        except ToolType.DoesNotExist as e:
+            response = {
+                'success': True,
+                'status_code': status.HTTP_200_OK,
+                'message': type_name+' List',
+                'data': []
+            }
+            return Response(response, status=status.HTTP_200_OK)

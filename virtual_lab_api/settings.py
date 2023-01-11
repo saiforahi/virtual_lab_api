@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
+    'django_json_widget',
     # 'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     'tools',
     'schedules',
     'project_management',
+
 ]
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]

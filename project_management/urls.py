@@ -5,5 +5,6 @@ from .views import ProjectManage
 
 urlpatterns = [
     path("manage/", ProjectManage.as_view()),
+    # path("create/", CreateProject.as_view()),
 ]
 

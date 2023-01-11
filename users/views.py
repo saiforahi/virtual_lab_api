@@ -1,5 +1,6 @@
 import sys
 
+from django.db import transaction
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.exceptions import APIException
@@ -25,27 +26,34 @@ class Login(APIView):
                 user_data = UserDetailSerializer(auth_user).data
                 refresh = RefreshToken.for_user(auth_user)
                 response = {
-                    'success': 'True',
-                    'status code': status.HTTP_200_OK,
+                    'success': True,
+                    'status_code': status.HTTP_200_OK,
                     'message': 'Login successful',
                     'data':{'refresh':str(refresh),'access':str(refresh.access_token),'user':user_data}
                 }
             else:
                 response = {
-                    'success': 'True',
-                    'status code': status.HTTP_200_OK,
+                    'success': False,
+                    'status_code': status.HTTP_200_OK,
                     'message': 'Wrong Credentials',
 
                 }
             return Response(response,status=status.HTTP_200_OK)
         except Exception as e:
-            response = 'on line {}'.format(sys.exc_info()[-1].tb_lineno), str(e)
+            message = 'on line {}'.format(sys.exc_info()[-1].tb_lineno), str(e)
+            response = {
+                'success': True,
+                'status_code': status.HTTP_400_BAD_REQUEST,
+                'message': message,
+
+            }
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 class Register(APIView):
     permission_classes = (AllowAny,)
 
+    @transaction.atomic
     def post(self,request):
         try:
             req_data = UserCreateSerializer(data=request.data)
@@ -61,6 +69,7 @@ class Register(APIView):
             }
             return Response(response,status=status.HTTP_200_OK)
         except APIException as e:
+            transaction.set_rollback(True)
             errors={}
             exception_detail=e.detail
             if exception_detail:
@@ -76,6 +85,7 @@ class Register(APIView):
             }
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
+            transaction.set_rollback(True)
             response = 'on line {}'.format(sys.exc_info()[-1].tb_lineno), str(e)
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
 

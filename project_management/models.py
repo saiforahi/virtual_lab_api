@@ -4,10 +4,17 @@ from django.db import models
 
 
 class Project(models.Model):
+    class Status(models.TextChoices):
+        DATE_BOOKED = "DATE BOOKED", 'DATE BOOKED'
+        DRAFT = "DRAFT", "DRAFT"
+        PENDING = "PENDING","PENDING"
+        COMPLETED = "COMPLETED","COMPLETED"
+
     owner = models.ForeignKey('users.User',on_delete=models.CASCADE, null=False, blank=False)
     name = models.CharField(max_length=255,blank=True,null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     schedule = models.ForeignKey('schedules.Schedule',on_delete=models.SET_NULL,blank=True,null=True)
+    status = models.TextField(choices=Status.choices, default=Status.DATE_BOOKED)
     created_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now=True, blank=False, null=False)
 
