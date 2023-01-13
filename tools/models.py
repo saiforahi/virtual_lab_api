@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 
 # Create your models here.
 
@@ -21,8 +21,8 @@ class TestBed(models.Model):
 class WidgetType(models.Model):
     name = models.CharField(max_length=255, verbose_name="Widget Type Name", null=False, blank=False, unique=True)
     specs = models.JSONField(null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
-    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+    created_at = models.DateTimeField(default=datetime.now, blank=False, null=False)
+    updated_at = models.DateTimeField(default=datetime.now, blank=False, null=False)
 
     class Meta:
         db_table = 'widget_types'
@@ -35,8 +35,8 @@ class WidgetType(models.Model):
 
 class ToolType(models.Model):
     name = models.CharField(max_length=255, verbose_name="Tool Type Name", null=False, blank=False, unique=True)
-    created_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
-    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+    created_at = models.DateTimeField(default=datetime.now, blank=False, null=False)
+    updated_at = models.DateTimeField(default=datetime.now, blank=False, null=False)
 
     class Meta:
         db_table = 'tool_types'
@@ -51,12 +51,13 @@ class Tool(models.Model):
     type = models.ForeignKey(ToolType, on_delete=models.CASCADE, null=False, blank=False,
                              error_messages={'null': 'Tool Type is required'})
     name = models.CharField(max_length=255, verbose_name="Tool Name", null=False, blank=False, unique=True)
+    quantity = models.IntegerField(default=1,null=False,blank=False)
     widget_type = models.ForeignKey(WidgetType, on_delete=models.SET(None), null=True, blank=True)
     user_values = models.JSONField(default=dict, null=True, blank=True)
     mqtt_data=models.JSONField(default=dict, null=True, blank=True)
     specs = models.JSONField(default=dict, null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
-    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+    created_at = models.DateTimeField(default=datetime.now, blank=False, null=False)
+    updated_at = models.DateTimeField(default=datetime.now, blank=False, null=False)
 
     class Meta:
         db_table = 'tools'

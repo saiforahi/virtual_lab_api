@@ -1,0 +1,23 @@
+[
+    {
+        "model": "tools.ToolType",
+        "pk": 1,
+        "fields": {
+            "name": "Processor"
+        }
+    },
+    {
+        "model": "tools.ToolType",
+        "pk": 2,
+        "fields": {
+            "name": "Sensor"
+        }
+    },
+    {
+        "model": "tools.ToolType",
+        "pk": 3,
+        "fields": {
+            "name": "Actuator"
+        }
+    }
+]

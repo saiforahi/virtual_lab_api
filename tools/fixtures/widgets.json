@@ -1,0 +1,30 @@
+[
+  {
+    "model": "tools.WidgetType",
+    "pk": 1,
+    "fields": {
+      "name": "Switch"
+    }
+  },
+  {
+    "model": "tools.WidgetType",
+    "pk": 2,
+    "fields": {
+      "name": "1 Slider"
+    }
+  },
+  {
+    "model": "tools.WidgetType",
+    "pk": 3,
+    "fields": {
+      "name": "3 Slider"
+    }
+  },
+  {
+    "model": "tools.WidgetType",
+    "pk": 4,
+    "fields": {
+      "name": "Selection Switch"
+    }
+  }
+]

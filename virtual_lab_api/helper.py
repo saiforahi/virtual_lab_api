@@ -10,7 +10,7 @@ def error_response(errors=[],message='',status_code=400,):
 
 def success_response(data=[],message='',status_code=200,):
     response = {
-        'success': 'False',
+        'success': True,
         'status_code': status_code,
         'message': message,
         'data': data

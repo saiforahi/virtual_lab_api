@@ -98,15 +98,15 @@ WSGI_APPLICATION = "virtual_lab_api.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'virtualh_api',
-        'USER': 'virtualh_root',
-        'PASSWORD': 'Dhaka@2022',
+        # 'NAME': 'virtualh_api',
+        # 'USER': 'virtualh_root',
+        # 'PASSWORD': 'Dhaka@2022',
         'PORT': '3306',
-        'HOST': '127.0.0.1'
+        'HOST': '127.0.0.1',
 
-        # 'NAME': 'virtual_lab',
-        # 'USER': 'root',
-        # 'PASSWORD':'',
+        'NAME': 'virtual_lab',
+        'USER': 'root',
+        'PASSWORD':'',
     }
 }
 

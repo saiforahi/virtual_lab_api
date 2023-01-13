@@ -23,7 +23,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField('Phone',max_length=11,unique=True,null=False,blank=False,error_messages={
         'unique':'An user with this phone number already exists'
     })
-    age = models.IntegerField(max_length=150,blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
     gender = models.IntegerField(choices=GENDER.choices, null=True, blank=True)
     usr_profile_pic = models.ImageField(upload_to='uploads/users/images/', blank=True, null=True)
     is_verified = models.BooleanField('verified', default=True, help_text='Designates whether this user is verified')

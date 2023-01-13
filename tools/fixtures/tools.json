@@ -1,0 +1,237 @@
+[
+  {
+    "model": "tools.Tool",
+    "pk": 1,
+    "fields": {
+      "type_id": 2,
+      "name": "DHT 11"
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 2,
+    "fields": {
+      "type_id": 2,
+      "name": "Moisture Sensor",
+      "widget_type": 1,
+      "user_values": [
+        "on_water",
+        "on_air"
+      ],
+      "mqtt_data": {
+        "moisture_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 3,
+    "fields": {
+      "type_id": 2,
+      "name": "MQ-2 Gas Sensor",
+      "widget_type": 1,
+      "user_values": [
+        "gas_on",
+        "gas_off"
+      ],
+      "mqtt_data": {
+        "mq2_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 4,
+    "fields": {
+      "type_id": 2,
+      "name": "Compass Sensor",
+      "widget_type": 3,
+      "user_values": {
+        "x": 180,
+        "y": 180,
+        "z": 180
+      },
+      "mqtt_data": {
+        "compass_sensor_x_1": "val",
+        "compass_sensor_y_1": "val",
+        "compass_sensor_z_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 5,
+    "fields": {
+      "type_id": 2,
+      "name": "DS18B20 Temp Sensor",
+      "widget_type": 1,
+      "user_values": [
+        "on_water",
+        "on_air"
+      ],
+      "mqtt_data": {
+        "ds18b20_temp_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 6,
+    "fields": {
+      "type_id": 2,
+      "name": "LDR Sensor Module",
+      "widget_type": 2,
+      "user_values": {
+        "min": 0,
+        "max": 255
+      },
+      "mqtt_data": {
+        "ldr_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 7,
+    "fields": {
+      "type_id": 2,
+      "name": "IR Sensor Module",
+      "widget_type": 4,
+      "user_values": [
+        "White",
+        "Black",
+        "Obstacle",
+        "No Obstacle"
+      ],
+      "mqtt_data": {
+        "ldr_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 8,
+    "fields": {
+      "type_id": 2,
+      "name": "Sound Sensor",
+      "widget_type": 2,
+      "user_values": {
+        "min": 0,
+        "max": 255
+      },
+      "mqtt_data": {
+        "sound_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 9,
+    "fields": {
+      "type_id": 2,
+      "name": "Tilt Sensor Module",
+      "widget_type": 1,
+      "user_values": [
+        "Contact",
+        "Discontact"
+      ],
+      "mqtt_data": {
+        "tilt_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 10,
+    "fields": {
+      "type_id": 2,
+      "name": "Flex Sensor"
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 11,
+    "fields": {
+      "type_id": 2,
+      "name": "Ultrasonnic Sensor",
+      "widget_type": 2,
+      "user_values": {
+        "min": 0,
+        "max": 100
+      },
+      "mqtt_data": {
+        "ultrasonic_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 12,
+    "fields": {
+      "type_id": 2,
+      "name": "BMP180"
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 13,
+    "fields": {
+      "type_id": 2,
+      "name": "Color Sensor",
+      "widget_type": 4,
+      "user_values": [
+        "Red","Green","Blue"
+      ],
+      "mqtt_data": {
+        "color_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 14,
+    "fields": {
+      "type_id": 2,
+      "name": "Light Intensity Sensor",
+      "widget_type": 2,
+      "user_values": {
+        "min": 0,
+        "max": 255
+      },
+      "mqtt_data": {
+        "light_intensity_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 15,
+    "fields": {
+      "type_id": 2,
+      "name": "Proximity Sensor",
+      "widget_type": 2,
+      "user_values": {
+        "min": 0,
+        "max": 100
+      },
+      "mqtt_data": {
+        "proximity_sensor_1": "val"
+      }
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 16,
+    "fields": {
+      "type_id": 2,
+      "name": "Push Button",
+      "widget_type": 1,
+      "user_values": [
+        "on","off"
+      ],
+      "mqtt_data": {
+        "switch_1": "val"
+      }
+    }
+  }
+]
