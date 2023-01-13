@@ -1,4 +1,6 @@
 import sys
+from datetime import datetime
+
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -30,7 +32,7 @@ class DateList(APIView):
 
     def get(self, request):
         try:
-            dates = Schedule.objects.order_by('date').values_list('date',flat=True).distinct()
+            dates = Schedule.objects.filter(date__gte=datetime.today()).order_by('date').values_list('date',flat=True).distinct()
 
             return Response(success_response(data=dates, message='Date List'),
                             status=status.HTTP_200_OK)

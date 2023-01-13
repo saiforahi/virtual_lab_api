@@ -19,11 +19,20 @@ class ToolTypeAdmin(admin.ModelAdmin):
     ordering = ('name',)
     readonly_fields = ('created_at', 'updated_at')
 
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
 
 class WidgetTypeAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {'fields':
-                    ('name','specs',)
+                    ('name', 'specs',)
                 }
          ),
     )
@@ -41,17 +50,26 @@ class WidgetTypeAdmin(admin.ModelAdmin):
         models.JSONField: {'widget': JSONEditorWidget},
     }
 
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
 
 class ToolAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {'fields': ('type','name', 'widget_type','user_values','mqtt_data')}),
+        (None, {'fields': ('type', 'name', 'widget_type', 'user_values', 'mqtt_data')}),
     )
 
     list_display = (
-        'name', 'type','widget_type', 'created_at', 'updated_at'
+        'name', 'type', 'widget_type', 'created_at', 'updated_at'
     )
     list_display_links = ('name',)
-    list_filter = ['name', 'type','widget_type']
+    list_filter = ['name', 'type', 'widget_type']
     search_fields = ('name', 'type')
     ordering = ('name',)
     readonly_fields = ('created_at', 'updated_at')
@@ -60,8 +78,17 @@ class ToolAdmin(admin.ModelAdmin):
         models.JSONField: {'widget': JSONEditorWidget},
     }
 
+    def has_add_permission(self, request):
+        return True
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
 
 # Register your models here.
 admin.site.register(ToolType, ToolTypeAdmin)
 admin.site.register(Tool, ToolAdmin)
-admin.site.register(WidgetType,WidgetTypeAdmin)
+admin.site.register(WidgetType, WidgetTypeAdmin)

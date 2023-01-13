@@ -13,10 +13,35 @@ class ProjectToolInlineAdmin(admin.StackedInline):
 
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {'fields': ('schedule', 'name', 'owner','diagram','extra_instruction')}),
+        (None, {'fields': ('schedule', 'name', 'owner', 'diagram', 'extra_instruction', 'status')}),
     )
-    list_display = ['name','owner','diagram']
+    list_display = ['name', 'owner', 'schedule']
+    list_filter = ['owner', 'schedule']
     inlines = [ProjectToolInlineAdmin]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return True
+
+    def has_change_permission(self, request, obj=None):
+        return True
+
+
+class ProjectToolAdmin(admin.ModelAdmin):
+    list_display = ['name', 'owner', 'schedule']
+    list_filter = ['owner', 'schedule']
+    inlines = [ProjectToolInlineAdmin]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return True
+
+    def has_change_permission(self, request, obj=None):
+        return False
 
 
 admin.site.register(Project, ProjectAdmin)

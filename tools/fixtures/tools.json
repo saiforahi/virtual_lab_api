@@ -233,5 +233,50 @@
         "switch_1": "val"
       }
     }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 17,
+    "fields": {
+      "type_id": 1,
+      "name": "Arduino Uno",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 18,
+    "fields": {
+      "type_id": 1,
+      "name": "Arduino Nano",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 19,
+    "fields": {
+      "type_id": 1,
+      "name": "Arduino Mega",
+      "quantity": 2
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 20,
+    "fields": {
+      "type_id": 1,
+      "name": "ESP32",
+      "quantity": 1
+    }
+  },
+  {
+    "model": "tools.Tool",
+    "pk": 21,
+    "fields": {
+      "type_id": 1,
+      "name": "ESP8266",
+      "quantity": 1
+    }
   }
 ]
