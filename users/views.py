@@ -21,10 +21,11 @@ class Login(APIView):
 
     def post(self,request):
         try:
-            auth_user = EmailModelBackend.authenticate(User.objects.get(email=request.data.get('email')), email=request.data.get('email'),password=request.data.get('password'))
-            if auth_user:
-                user_data = UserDetailSerializer(auth_user).data
-                refresh = RefreshToken.for_user(auth_user)
+            auth_reponse = EmailModelBackend.authenticate(User.objects.get(email=request.data.get('email')), email=request.data.get('email'),password=request.data.get('password'))
+
+            if not isinstance(auth_reponse, str):
+                user_data = UserDetailSerializer(auth_reponse).data
+                refresh = RefreshToken.for_user(auth_reponse)
                 response = {
                     'success': True,
                     'status_code': status.HTTP_200_OK,
@@ -34,11 +35,18 @@ class Login(APIView):
             else:
                 response = {
                     'success': False,
-                    'status_code': status.HTTP_200_OK,
-                    'message': 'Wrong Credentials',
+                    'status_code': status.HTTP_400_BAD_REQUEST,
+                    'message': auth_reponse,
 
                 }
-            return Response(response,status=status.HTTP_200_OK)
+            return Response(response,status=response['status_code'])
+        except User.DoesNotExist as e:
+            response = {
+                'success': True,
+                'status_code': status.HTTP_400_BAD_REQUEST,
+                'message': "User does not exist, Please signup first.",
+            }
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             message = 'on line {}'.format(sys.exc_info()[-1].tb_lineno), str(e)
             response = {

@@ -13,10 +13,15 @@ class EmailModelBackend(object):
             user = User._default_manager.get(**{case_insensitive_username_field: email})
 
             # user = User.objects.get(**kwargs)
-            if user.check_password(password):
-                return user
+            if user.is_active:
+                if user.check_password(password):
+                    return user
+                else:
+                    return "Wrong Credentials"
+            else:
+                return "User is not active"
         except User.DoesNotExist:
-            return None
+            return "User not found"
 
     def get_user(self, user_id):
         try:
