@@ -1,5 +1,5 @@
 import sys
-
+from datetime import datetime
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.exceptions import APIException
@@ -60,6 +60,35 @@ class UploadDiagram(APIView):
             else:
                 return Response(error_response(errors=[], message='Project Diagram upload failed'),
                                 status=status.HTTP_400_BAD_REQUEST)
+
+        except Exception as e:
+            response = 'on line {}'.format(sys.exc_info()[-1].tb_lineno), str(e)
+            return Response(error_response(errors=[response], message='Project List failed'),
+                        status=status.HTTP_400_BAD_REQUEST)
+
+
+class ArenaFeed(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self,request):
+        try:
+            now=datetime.now().time()
+            project=Project.objects.filter(schedule__start_time__lt=now,schedule__end_time__gt=now,schedule__is_available=True,status__in=["DATE BOOKED","DRAFT"]).first()
+            print(project)
+            if project:
+                response = {
+                    "project": ProjectSerializer(project).data,
+                    "cam_feed": True,
+                    "code_feed": True
+                }
+            else:
+                response={
+                    "project":None,
+                    "cam_feed":False,
+                    "code_feed":False
+                }
+            return Response(success_response(data=response, message='Project Data'),
+                            status=status.HTTP_200_OK)
 
         except Exception as e:
             response = 'on line {}'.format(sys.exc_info()[-1].tb_lineno), str(e)

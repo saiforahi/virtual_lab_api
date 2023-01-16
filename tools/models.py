@@ -5,6 +5,7 @@ from datetime import datetime
 
 class TestBed(models.Model):
     name = models.CharField(max_length=255, verbose_name="Test Bed Name", null=False, blank=False, unique=True)
+    cam_feed_link=models.TextField(max_length=2050,verbose_name="Live cam feed link",null=True,blank=True)
     specs = models.JSONField(default=dict, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)

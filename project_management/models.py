@@ -1,5 +1,9 @@
 from django.db import models
 
+from schedules.models import Schedule
+from tools.models import TestBed
+
+
 # Create your models here.
 
 
@@ -11,12 +15,13 @@ class Project(models.Model):
         COMPLETED = "COMPLETED","COMPLETED"
 
     owner = models.ForeignKey('users.User',on_delete=models.CASCADE, null=False, blank=False)
+    test_bed = models.ForeignKey(TestBed, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=255,blank=True,null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     diagram=models.ImageField(upload_to='uploads/projects/diagrams/', blank=True, null=True)
     extra_instruction=models.TextField(blank=True,null=True)
-    schedule = models.ForeignKey('schedules.Schedule',on_delete=models.SET_NULL,blank=True,null=True)
-    status = models.TextField(choices=Status.choices, default=Status.DATE_BOOKED)
+    schedule = models.ForeignKey(Schedule,on_delete=models.SET_NULL,blank=True,null=True)
+    status = models.TextField(choices=Status.choices, default=Status.PENDING)
     created_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
     updated_at = models.DateTimeField(auto_now=True, blank=False, null=False)
 
@@ -24,6 +29,7 @@ class Project(models.Model):
         db_table = 'projects'
         verbose_name = 'Project'
         verbose_name_plural = 'Projects'
+        unique_together=(('test_bed','owner'),)
 
     def __str__(self):
         return "%s %s" % (self.name, self.created_at.strftime("%m/%d/%Y, %H:%M:%S"),)

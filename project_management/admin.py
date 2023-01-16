@@ -13,7 +13,7 @@ class ProjectToolInlineAdmin(admin.StackedInline):
 
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {'fields': ('schedule', 'name', 'owner', 'diagram', 'extra_instruction', 'status')}),
+        (None, {'fields': ('schedule','name', 'owner', 'test_bed' ,'diagram', 'extra_instruction', 'status')}),
     )
     list_display = ['name', 'owner', 'schedule']
     list_filter = ['owner', 'schedule']

@@ -14,7 +14,7 @@ class DatePickerInput(forms.TimeInput):
 class ScheduleCreateForm(ModelForm):
     class Meta:
         model = Schedule
-        fields = ['test_bed','date','start_time', 'end_time', 'is_available']
+        fields = ['date','start_time', 'end_time', 'is_available']
 
         widgets = {
             'date' : DatePickerInput(),
@@ -26,7 +26,7 @@ class ScheduleCreateForm(ModelForm):
 class ScheduleChangeForm(ModelForm):
     class Meta:
         model = Schedule
-        fields = ['test_bed','date','start_time', 'end_time', 'is_available']
+        fields = ['date','start_time', 'end_time', 'is_available']
 
         widgets = {
             # 'date' : DatePickerInput(),

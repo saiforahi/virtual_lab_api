@@ -4,14 +4,13 @@ from django.db import models
 
 
 class Schedule(models.Model):
-    test_bed=models.ForeignKey('tools.TestBed',on_delete=models.CASCADE, null=True, blank=True)
     date = models.DateField(verbose_name="Date",null=False,blank=False)
-    start_time = models.TimeField(default=None,null=False,blank=False,error_messages={'blank':'Starting time can not be empty'})
-    end_time = models.TimeField(default=None,null=False,blank=False,error_messages={'blank':'Ending time can not be empty'})
+    start_time = models.TimeField(null=False,blank=False,error_messages={'blank':'Starting time can not be empty'})
+    end_time = models.TimeField(null=False,blank=False,error_messages={'blank':'Ending time can not be empty'})
     is_available = models.BooleanField(default=True,null=False,blank=False)
 
     class Meta:
-        unique_together = (('date', 'start_time','end_time','test_bed'),)
+        unique_together = (('date', 'start_time','end_time'),)
         db_table = 'schedules'
         verbose_name = 'Schedule'
         verbose_name_plural = 'Schedules'

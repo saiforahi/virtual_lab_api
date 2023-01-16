@@ -13,7 +13,7 @@ class ScheduleAdmin(admin.ModelAdmin):
         models.TimeField: {'widget': widgets.TimeInput(format='%H:%M %p')}
     }
     fieldsets = (
-        (None, {'fields': ('test_bed', 'date', 'start_time', 'end_time', 'is_available')}),
+        (None, {'fields': ('date', 'start_time', 'end_time', 'is_available')}),
     )
 
 
