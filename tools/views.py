@@ -1,12 +1,14 @@
+import json
 import sys
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
+
+from tools.helper import on_connect, on_publish
 from tools.models import Tool, ToolType
 from tools.serializers import ToolSerializer
-from virtual_lab_api.helper import error_response, success_response
-
+import paho.mqtt.client as paho
 
 # Create your views here.
 
@@ -33,3 +35,22 @@ class ToolList(APIView):
                 'data': []
             }
             return Response(response, status=status.HTTP_200_OK)
+
+
+class TestMQTT(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request):
+        try:
+            client = paho.Client(client_id="bveuwiyr923rkh2nsjugbjbjh4o", userdata=None, protocol=paho.MQTTv5)
+            client.on_connect=on_connect
+            client.on_publish = on_publish
+            client.connect("broker.hivemq.com", 1883)
+            client.loop_start()
+            client.publish(topic="VHL/SUB",payload="moisture_sensor_1:on_water",qos=2)
+            # client.loop_stop()
+            return Response('message sent')
+        except Exception as e:
+
+            print(str(e))
+            return Response(str(e))

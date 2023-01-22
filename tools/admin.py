@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from tools.models import ToolType, Tool, WidgetType
+from tools.models import ToolType, Tool, WidgetType, TestBed
 from django_json_widget.widgets import JSONEditorWidget
 from django.db import models
 
@@ -92,3 +92,4 @@ class ToolAdmin(admin.ModelAdmin):
 admin.site.register(ToolType, ToolTypeAdmin)
 admin.site.register(Tool, ToolAdmin)
 admin.site.register(WidgetType, WidgetTypeAdmin)
+admin.site.register(TestBed)

@@ -1,6 +1,12 @@
 from rest_framework import serializers
+from tools.models import Tool, ToolType, WidgetType
 
-from tools.models import Tool, ToolType
+
+class WidgetTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=WidgetType
+        # fields = "__all__"
+        exclude = ('created_at', 'updated_at')
 
 
 class ToolTypeSerializer(serializers.ModelSerializer):
@@ -13,8 +19,11 @@ class ToolTypeSerializer(serializers.ModelSerializer):
 
 class ToolSerializer(serializers.ModelSerializer):
     type = ToolTypeSerializer()
+    widget_type = WidgetTypeSerializer()
 
     class Meta:
         model=Tool
         # fields = "__all__"
         exclude = ('created_at', 'updated_at')
+
+
