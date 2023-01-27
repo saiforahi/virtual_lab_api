@@ -19,7 +19,7 @@
         "on_air"
       ],
       "mqtt_data": {
-        "moisture_sensor_1": "val"
+        "prefix": "moisture_sensor_1"
       }
     }
   },
@@ -35,7 +35,7 @@
         "gas_off"
       ],
       "mqtt_data": {
-        "mq2_sensor_1": "val"
+        "prefix": "mq2_sensor_1"
       }
     }
   },
@@ -52,9 +52,9 @@
         "z": 180
       },
       "mqtt_data": {
-        "compass_sensor_x_1": "val",
-        "compass_sensor_y_1": "val",
-        "compass_sensor_z_1": "val"
+        "x_prefix": "compass_sensor_x_1",
+        "y_prefix": "compass_sensor_y_1",
+        "z_prefix": "compass_sensor_z_1"
       }
     }
   },
@@ -70,7 +70,7 @@
         "on_air"
       ],
       "mqtt_data": {
-        "ds18b20_temp_sensor_1": "val"
+        "prefix": "ds18b20_temp_sensor_1"
       }
     }
   },
@@ -86,7 +86,7 @@
         "max": 255
       },
       "mqtt_data": {
-        "ldr_sensor_1": "val"
+        "prefix": "ldr_sensor_1"
       }
     }
   },
@@ -98,13 +98,13 @@
       "name": "IR Sensor Module",
       "widget_type": 4,
       "user_values": [
-        "White",
-        "Black",
-        "Obstacle",
-        "No Obstacle"
+        "white",
+        "black",
+        "obstacle",
+        "no obstacle"
       ],
       "mqtt_data": {
-        "ldr_sensor_1": "val"
+        "prefix": "ir_sensor_1"
       }
     }
   },
@@ -120,7 +120,7 @@
         "max": 255
       },
       "mqtt_data": {
-        "sound_sensor_1": "val"
+        "prefix": "sound_sensor_1"
       }
     }
   },
@@ -136,7 +136,7 @@
         "Discontact"
       ],
       "mqtt_data": {
-        "tilt_sensor_1": "val"
+        "prefix": "tilt_sensor_1"
       }
     }
   },
@@ -160,7 +160,7 @@
         "max": 100
       },
       "mqtt_data": {
-        "ultrasonic_sensor_1": "val"
+        "prefix": "ultrasonic_sensor_1"
       }
     }
   },
@@ -183,7 +183,7 @@
         "Red","Green","Blue"
       ],
       "mqtt_data": {
-        "color_sensor_1": "val"
+        "prefix": "color_sensor_1"
       }
     }
   },
@@ -199,7 +199,7 @@
         "max": 255
       },
       "mqtt_data": {
-        "light_intensity_sensor_1": "val"
+        "prefix": "light_intensity_sensor_1"
       }
     }
   },
@@ -215,7 +215,7 @@
         "max": 100
       },
       "mqtt_data": {
-        "proximity_sensor_1": "val"
+        "prefix": "proximity_sensor_1"
       }
     }
   },
@@ -230,7 +230,7 @@
         "on","off"
       ],
       "mqtt_data": {
-        "switch_1": "val"
+        "prefix": "switch_1"
       }
     }
   },

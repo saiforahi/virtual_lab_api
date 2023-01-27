@@ -74,7 +74,7 @@ class ArenaFeed(APIView):
         try:
             now=datetime.now().time()
             project=Project.objects.filter(schedule__start_time__lt=now,schedule__end_time__gt=now,schedule__is_available=True,status__in=["DATE BOOKED","DRAFT"]).first()
-            print(project)
+            # print(project)
             if project:
                 response = {
                     "project": ProjectSerializer(project).data,
